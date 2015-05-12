@@ -1,0 +1,20 @@
+defaults: &defaults
+  base_url: <%= ENV['DATA_STORE_API_URL'] %>
+  api_key: <%= ENV['DATA_STORE_API_KEY'] %>
+  disable_ssl: false
+
+staging: &staging
+  <<: *defaults
+
+development:
+  <<: *defaults
+  disable_ssl: true
+
+production: &production
+  <<: *defaults
+
+sandbox:
+  <<: *production
+
+test:
+  <<: *defaults
