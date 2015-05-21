@@ -17,8 +17,15 @@ module DataViewer
     configure do
       set :root, ENV['APP_ROOT']
       set :envronment, ENV['RACK_ENV']
+      set :views, ['app/views']
+      set :public_folder, File.join(root, 'app/assets/stylesheets')
     end
 
     register Extensions::ProxyRoutes
+    register Extensions::AssetPipeline
+
+    get '/' do
+      erb :'index.html'
+    end
   end
 end
