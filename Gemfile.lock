@@ -1,10 +1,7 @@
 GIT
   remote: git@github.com:vdizzle/data_store_client.git
-  revision: bf4bc8cc72621c8b6d354f0c00e055f4007cc42a
-  specs:
-
-PATH
-  remote: /data/projects/data_store_client
+  revision: b1a51625bc9b94e62fa3a1ded7bc2a55d7dab902
+  branch: develop
   specs:
     data_store_client (2.1.2)
       activesupport (>= 3.2.17)

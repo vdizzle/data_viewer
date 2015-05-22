@@ -11,6 +11,7 @@ module Extensions
           params['file'][:tempfile] = params['file'][:tempfile].path
         end
 
+        params.merge!(user_id: rand(100))
         if request.body.respond_to?(:read)
           begin
             body = request.body.read
@@ -19,13 +20,8 @@ module Extensions
           end
         end
 
-        puts "Method - #{method}"
-        puts "url - #{url}"
-        puts "params - #{params}"
         response = DataStoreClient::Api.request_raw(method, url, params)
-        puts response.inspect
 
-        puts '-'*36
         content_type 'application/json'
         status response.code
         body response.body

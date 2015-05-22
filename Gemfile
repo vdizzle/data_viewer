@@ -12,7 +12,7 @@ gem 'sass'
 gem 'compass'
 gem 'unicorn', '~> 4.6.2'
 
-gem 'data_store_client', git: 'git@github.com:vdizzle/data_store_client.git', path: '/data/projects/data_store_client'
+gem 'data_store_client', git: 'git@github.com:vdizzle/data_store_client.git', branch: 'develop'
 
 group :development do
   gem 'tux', '~> 0.3.0'
