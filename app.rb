@@ -47,7 +47,11 @@ module DataViewer
     end
 
     get '/login' do
-      erb :'login.html'
+      if user_logged_in?
+        redirect to('/')
+      else
+        erb :'login.html'
+      end
     end
 
     get '/logout' do
