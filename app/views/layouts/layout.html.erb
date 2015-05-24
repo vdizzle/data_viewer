@@ -12,22 +12,27 @@
 
   <body>
     <header></header>
-    <% if user_logged_in? %>
-      <div class="login-status">
-        <nav class="login">
-          <ul>
+    <div class="login-status">
+      <nav class="login">
+        <ul>
+          <% if user_logged_in? %>
+            <li><a href="/logout">Logout</a></li>
+          <% else %>
             <li><a href="/login">Login</a></li>
-          </ul>
-        </nav>
-      </div>
-    <% end %>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
     <nav class="menu">
         <a class="logo" href="">Dash Dash</a>
         <ul class="main">
-          <li><a href="#contact-us" class="contact-us">Contact Us</a></li>
+          <li><a href="#contact-us" class="contact-us">Upload</a></li>
         </ul>
         <a href="#" id="pull"></a>
       </nav>
     <footer></footer>
+
+    <script type="text/javascript">
+    </script>
   </body>
 </html>

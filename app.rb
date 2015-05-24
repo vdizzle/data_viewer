@@ -20,6 +20,7 @@ module DataViewer
       set :envronment, ENV['RACK_ENV']
       set :views, ['app/views']
       set :public_folder, File.join(root, 'app/assets/stylesheets')
+      enable :sessions
     end
 
     helpers Helpers::Application
@@ -32,19 +33,27 @@ module DataViewer
       if user_logged_in?
         erb :'index.html', layout: :'layouts/layout.html'
       else
-        erb :'no_session_index.html', :'layouts/layout.html.erb'
+        erb :'no_session_index.html', layout: :'layouts/layout.html'
       end
     end
 
     post '/auth/login' do
       response = JSON.parse(proxy_to_data_store)
-      if response['status'] == 'ok'
+      unless response['session_id'].empty?
+        session['login_ticket'] = response['session_id']
+        session['current_user_id'] = response['current_user_id']
         redirect to('/')
       end
     end
 
     get '/login' do
       erb :'login.html'
+    end
+
+    get '/logout' do
+      session['login_ticket'] = nil
+      session['current_user_id'] = nil
+      redirect to ('/')
     end
   end
 end
