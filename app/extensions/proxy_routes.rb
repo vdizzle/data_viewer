@@ -2,7 +2,6 @@ module Extensions
   module ProxyRoutes
     module Helpers
       def proxy_to_data_store
-        puts '-'*36
         method = request.request_method.downcase.to_sym
         url = request.path.sub(%r{^/api/data_store/}, '')
         params = request.params
