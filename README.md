@@ -6,6 +6,9 @@
     In Linux, create the nginx conf file in /etc/nginx/sites-enabled.
     Use a sammple nginx file here: https://gist.github.com/vdizzle/c47a30731893dd29513b
     Name the file /etc/nginx/sites-enabled/dat_viewer.conf or something similar.
+4. Set the following ENV variables as:
+    1. `export DATA_STORE_API_URL=your_api_instance_url`
+    2. `export DATA_STORE_API_KEY=your_api_key`
 4. Go to project path, and run the following
     1. `bundle`
     2. `foreman start`
