@@ -14,7 +14,7 @@ module Extensions
         if request.body.respond_to?(:read)
           begin
             body = request.body.read
-            params.merge!(JSON.parse(body)) unless body.empty?
+            params.merge!(Rack::Utils.parse_nested_query(body)) unless body.empty?
           rescue JSON::ParserError
           end
         end
