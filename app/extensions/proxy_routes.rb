@@ -10,7 +10,7 @@ module Extensions
           params['file'][:tempfile] = params['file'][:tempfile].path
         end
 
-        params.merge!(user_id: rand(100))
+        params.merge!(user_id: session[:current_user_id])
         if request.body.respond_to?(:read)
           begin
             body = request.body.read
