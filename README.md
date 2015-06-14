@@ -1,4 +1,4 @@
-# Setting up data viewer
+   # Setting up data viewer
 
 1. Clone the repo as `git clone git@github.com:vdizzle/data_viewer.git`
 2. Switch to `develop` branch as `git checkout develop`
@@ -10,9 +10,15 @@
 4. Set the following ENV variables as:
     1. `export DATA_STORE_API_URL=your_api_instance_url`
     2. `export DATA_STORE_API_KEY=your_api_key`
-4. Go to project path, and run the following
+5. Ensure that your environment has nodejs installed. If you are running ubuntu, here's how you can do it:
+    1. `sudo apt-get update`
+    2. `sudo apt-get install nodejs`
+    3. `sudo apt-get install npm`
+    4. `sudo apt-get install libnotify-bin`
+    5. `sudo npm install --global gulp`
+    6. `sudo npm install --global notify-send`
+    7. `npm install`
+6. Go to project path, and run the following
     1. `bundle`
-    2. `foreman start`
-
-    
-
+    2. `gulp`
+    3. `foreman start`

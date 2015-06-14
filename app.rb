@@ -19,7 +19,7 @@ module DataViewer
       set :root, ENV['APP_ROOT']
       set :envronment, ENV['RACK_ENV']
       set :views, ['app/views']
-      set :public_folder, File.join(root, 'app/assets/stylesheets')
+      set :public_dir, 'dist'
       enable :sessions
     end
 
@@ -27,13 +27,22 @@ module DataViewer
     helpers Extensions::ProxyRoutes::Helpers
 
     register Extensions::ProxyRoutes
-    register Extensions::AssetPipeline
+
+    helpers do
+      def stylesheet_link(path)
+        %{<link href="#{path}" rel="stylesheet" type="text/css" media="screen">}.html_safe
+      end
+
+      def javascript_tag(path)
+        %{<script src="#{path}"></script>}.html_safe
+      end
+    end
 
     get '/' do
       if user_logged_in?
-        erb :'index.html', layout: :'layouts/layout.html'
+        erb :'index.html'
       else
-        erb :'no_session_index.html', layout: :'layouts/layout.html'
+        erb :'no_session_index.html'
       end
     end
 
