@@ -1,5 +1,6 @@
 var React = require('react'),
     Header = require('./header'),
+    Backbone = require('backbone'),
     UploadStore = require('../stores/upload-store'),
     UploadIndex = require('./uploads/index');
 
@@ -9,6 +10,7 @@ var AppContainer = React.createClass({
   },
 
   componentDidMount: function() {
+    Backbone.history.start();
   },
 
   componentWillUnmount: function() {

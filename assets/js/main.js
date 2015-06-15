@@ -2,6 +2,7 @@
 
 var React = require('react'),
     AppDispatcher = require('./dispatcher/app-dispatcher'),
+    AppRouter = require('./router'),
     UploadAPI = require('./utils/upload-api'),
     AppContainer = require('./components/app-container');
 

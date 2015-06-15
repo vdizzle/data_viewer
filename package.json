@@ -25,7 +25,8 @@
     "jquery": "~2.1.4",
     "classnames": "~1.2.2",
     "react-bootstrap": "~0.23.2",
-    "gulp-imagemin": "~2.2.1"
+    "gulp-imagemin": "~2.2.1",
+    "backbone": "~1.2.1"
   },
   "repository": {
     "type": "git",

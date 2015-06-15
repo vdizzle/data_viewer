@@ -28,7 +28,7 @@ var UploadListItem = React.createClass({
   render: function() {
     return (
       <li data-id={ this.props.attributes.id }>
-        <span className="upload-item">{ this.props.attributes.filename }</span>
+        <a href={ "#/uploads/" + this.props.attributes.id } className="upload-item">{ this.props.attributes.filename }</a>
         <a className="delete"
            data-id={ this.props.attributes.id }
            onClick={ this.delete }>
