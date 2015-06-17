@@ -4,11 +4,26 @@ var Backbone = require('backbone'),
 
 var AppRouter = Backbone.Router.extend({
   routes: {
-    '*glob(?*querystring)': 'navigateToRoute'
+    'uploads': 'uploadsIndex',
+    'uploads/:id': 'uploadsDetail'
+//    '*glob(?*querystring)': 'navigateToRoute'
+  },
+
+  uploadsIndex: function() {
+    AppDispatcher.handleViewAction({
+      actionType: RouteConstants.UPLOADS_INDEX,
+      params: {}
+    });
+  },
+
+  uploadsDetail: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: RouteConstants.UPLOADS_DETAIL,
+      params: { id: id }
+    });
   },
 
   navigateToRoute: function(route, queryString) {
-    debugger;
     var params = this._parseQueryString(queryString);
 
     AppDispatcher.handleViewAction({

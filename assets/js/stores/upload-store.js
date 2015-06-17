@@ -4,14 +4,23 @@ var AppDispatcher = require('../dispatcher/app-dispatcher'),
     UploadConstants = require('../constants/upload-constants'),
     UploadAPI = require('../utils/upload-api'),
     assign = require('object-assign'),
-    _uploads = [];
+    _uploads = [],
+    _currentUpload = {};
 
 function _populateStore(data) {
   _uploads = data;
 }
 
+function _set(data) {
+  _currentUpload = data;
+}
+
 function _fetchAll() {
   UploadAPI.fetchAll();
+}
+
+function _get(id) {
+  UploadAPI.get(id);
 }
 
 function _create(data) {
@@ -25,6 +34,10 @@ function _delete(id) {
 var UploadStore = assign({}, EventEmitter.prototype, {
   getUploads: function() {
     return _uploads;
+  },
+
+  getById: function(id) {
+    return _currentUpload;
   },
 
   emitChange: function() {
@@ -46,6 +59,12 @@ AppDispatcher.register(function(payload) {
   switch(action.actionType) {
     case UploadConstants.UPLOADS_FETCH_COMPLETE:
       _populateStore(action.data);
+      break;
+    case UploadConstants.UPLOAD_FETCH:
+      _get(action.data);
+      break;
+    case UploadConstants.UPLOAD_FETCH_COMPLETE:
+      _set(action.data);
       break;
     case UploadConstants.UPLOAD_CREATE:
       _create(action.data);

@@ -2,6 +2,7 @@ var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
   UPLOADS_FETCH_COMPLETE:null,
+  UPLOAD_FETCH_COMPLETE:null,
   UPLOAD_CREATE: null,
   UPLOAD_COMPLETE: null,
   UPLOAD_ERROR: null,

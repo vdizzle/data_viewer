@@ -1,8 +1,7 @@
 var React = require('react'),
     Header = require('./header'),
     Backbone = require('backbone'),
-    UploadStore = require('../stores/upload-store'),
-    UploadIndex = require('./uploads/index');
+    AppStore = require('../stores/app-store');
 
 var AppContainer = React.createClass({
 
@@ -11,22 +10,35 @@ var AppContainer = React.createClass({
 
   componentDidMount: function() {
     Backbone.history.start();
+    AppStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    $(document).off('.app-container');
+    AppStore.removeChangeListener(this._onChange);
   },
 
   getInitialState: function() {
     return {
+      currentView: AppStore.getCurrentView().view,
+      viewParams: AppStore.getCurrentView().params
     };
   },
 
+  _onChange: function() {
+    this.setState({
+      currentView: AppStore.getCurrentView().view,
+      viewParams: AppStore.getCurrentView().params
+    });
+  },
+
   render: function() {
+    var Handler = this.state.currentView;
     return (
       <div>
         <Header />
-        <UploadIndex />
+          <div className="app-currentView">
+            <Handler params={ this.state.viewParams } />
+          </div>
       </div>
       );
   }

@@ -17,11 +17,32 @@ module.exports = {
     });
   },
 
-  create: function(data) {
+  get: function(id) {
+    $.ajax('/api/data-store/uploads/' + id, {
+      type: 'GET',
+      contentType: 'application/json',
+      data: {},
+
+      beforeSend: function(xhr) {
+      },
+
+      success: function(response) {
+        UploadActions.notifyUploadFetched(response);
+      },
+
+      error: function(response, xhr, options) {
+        debugger;
+      }
+    });
+    return false;
+
+  },
+
+  create: function(params) {
     $.ajax('/api/data-store/uploads', {
       type: 'POST',
       contentType: 'application/json',
-      data: data,
+      data: params,
 
       beforeSend: function(xhr) {
       },
@@ -37,7 +58,7 @@ module.exports = {
     return false;
   },
 
-  update: function(id, data) {
+  update: function(id, params) {
 
   },
 

@@ -9,6 +9,20 @@ var UploadActions = {
     });
   },
 
+  fetchUpload: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: UploadConstants.UPLOAD_FETCH,
+      data: id
+    });
+  },
+
+  notifyUploadFetched: function(data) {
+    AppDispatcher.handleServerAction({
+      actionType: UploadConstants.UPLOAD_FETCH_COMPLETE,
+      data: data
+    });
+  },
+
   startUpload: function(data) {
     AppDispatcher.handleViewAction({
       actionType: UploadConstants.UPLOAD_CREATE,

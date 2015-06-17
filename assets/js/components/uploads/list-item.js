@@ -21,14 +21,22 @@ var UploadListItem = React.createClass({
     return false;
   },
 
-  _onChange: function() {
+  onClick: function(event) {
+    UploadActions.fetchUpload(this.props.attributes.id);
+  },
 
+  _onChange: function() {
+    // do something
   },
 
   render: function() {
     return (
       <li data-id={ this.props.attributes.id }>
-        <a href={ "#/uploads/" + this.props.attributes.id } className="upload-item">{ this.props.attributes.filename }</a>
+        <a href={ "#uploads/" + this.props.attributes.id }
+           className="upload-item"i
+           onClick={ this.onClick }>
+           { this.props.attributes.filename }
+        </a>
         <a className="delete"
            data-id={ this.props.attributes.id }
            onClick={ this.delete }>
