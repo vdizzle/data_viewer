@@ -31,7 +31,9 @@ var UploadDetail = React.createClass({
       <div>
         <a href="#uploads">Back to List</a>
         <p>Filename: <span className="file-name">{ this.state.filename }</span></p>
-        <ReactTable data={ this.state.sample } />
+        <div className="data-table-container">
+          <ReactTable className="table table-striped table-bordered table-condensed" data={ this.state.sample } />
+        </div>
       </div>
       );
   }

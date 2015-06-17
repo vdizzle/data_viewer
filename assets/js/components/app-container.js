@@ -36,7 +36,7 @@ var AppContainer = React.createClass({
     return (
       <div>
         <Header />
-          <div className="app-currentView">
+          <div className="app-current-view">
             <Handler params={ this.state.viewParams } />
           </div>
       </div>

@@ -33,3 +33,22 @@ input[type="file"] {
     }
   }
 }
+
+.app-current-view {
+  padding: 20px 70px;
+}
+
+.data-table-container {
+  overflow: scroll;
+  width: 98%;
+
+  table {
+    font-size: 12px;
+    table-layout: fixed;
+
+    th, td {
+      overflow: hidden;
+      width: 200px;
+    }
+  }
+}
