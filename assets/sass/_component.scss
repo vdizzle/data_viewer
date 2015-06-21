@@ -44,11 +44,33 @@ input[type="file"] {
 
   table {
     font-size: 12px;
-    table-layout: fixed;
 
-    th, td {
-      overflow: hidden;
-      width: 200px;
+    &.upload-table {
+      table-layout: fixed;
+
+      th, td {
+        width: 248px;
+      }
+
+      th {
+        overflow: visible;
+        border: 1px solid #ddd;
+
+        .btn-group {
+          padding: 6px;
+        }
+
+        input.editable {
+          margin: 6px;
+          width: 160px;
+          line-height: 32px;
+          font-weight: 400;
+        }
+      }
+
+      td {
+        overflow: hidden;
+      }
     }
   }
 }

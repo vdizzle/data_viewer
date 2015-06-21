@@ -1,6 +1,7 @@
 var React = require('react'),
     UploadStore = require('../../stores/upload-store'),
-    UploadActions = require('../../actions/upload-actions');
+    UploadActions = require('../../actions/upload-actions'),
+    MetaInfoActions = require('../../actions/meta-info-actions');
 
 var UploadListItem = React.createClass({
   componentDidMount: function() {
@@ -23,6 +24,7 @@ var UploadListItem = React.createClass({
 
   onClick: function(event) {
     UploadActions.fetchUpload(this.props.attributes.id);
+    MetaInfoActions.fetchDataTypes();
   },
 
   _onChange: function() {
