@@ -15,10 +15,13 @@ var TableHead = React.createClass({
     return {};
   },
 
+  headerTypeSelected: function(eventKey, href, target) {
+  },
+
   render: function() {
     var menuItems = this.props.options.map(function(item) {
-      return <MenuItem eventKey={ item.value }>{ item.label }</MenuItem>;
-    });
+      return <MenuItem eventKey={ this.props.columnIndex + '|' + item.value } onSelect={ this.headerTypeSelected }>{ item.label }</MenuItem>;
+    }.bind(this));
     return (
       <th>
         <DropdownButton>

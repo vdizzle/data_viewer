@@ -37,8 +37,8 @@ var UploadDetail = React.createClass({
   },
 
   render: function() {
-    var tableHeader = Object.keys(this.state.upload.sample[0]).map(function(title){
-      return <Thead name={ title} options={ this.state.metaTypes } />
+    var tableHeader = Object.keys(this.state.upload.sample[0]).map(function(title, index){
+      return <Thead columnIndex={ index } name={ title} options={ this.state.metaTypes } />
     }.bind(this));
 
     var tableBody = this.state.upload.sample.map(function(item) {
