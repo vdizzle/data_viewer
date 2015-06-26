@@ -20,6 +20,7 @@ var UploadDetail = React.createClass({
 
   getInitialState: function() {
     return {
+      metaDefinition: [],
       upload: {
         id: '',
         filename: '',
@@ -34,11 +35,23 @@ var UploadDetail = React.createClass({
       upload: UploadStore.getById(this.props.params.id),
       metaTypes: MetaInfoStore.getDataTypes()
     });
+
+    Object.keys(this.state.upload.sample[0]).map(function(title, index) {
+      this.state.metaDefinition.push('generictext');
+    }.bind(this));
+  },
+
+  handleHeaderClick: function(columnDef) {
+    this.state.metaDefinition[columnDef.index] = columnDef.type;
+    console.log(this.state.metaDefinition);
   },
 
   render: function() {
-    var tableHeader = Object.keys(this.state.upload.sample[0]).map(function(title, index){
-      return <Thead columnIndex={ index } name={ title} options={ this.state.metaTypes } />
+    var tableHeader = Object.keys(this.state.upload.sample[0]).map(function(title, index) {
+      return <Thead columnIndex={ index }
+                    name={ title }
+                    options={ this.state.metaTypes }
+                    onClick={ this.handleHeaderClick } />
     }.bind(this));
 
     var tableBody = this.state.upload.sample.map(function(item) {

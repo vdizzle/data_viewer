@@ -5,6 +5,7 @@ var React = require('react'),
 var TableHead = React.createClass({
   componentWillMount: function() {
   },
+
   componentDidMount: function() {
   },
 
@@ -12,10 +13,16 @@ var TableHead = React.createClass({
   },
 
   getInitialState: function() {
-    return {};
+    return {
+    };
   },
 
   headerTypeSelected: function(eventKey, href, target) {
+    var options = {
+      index: eventKey.split('|')[0],
+      type: eventKey.split('|')[1],
+    };
+    this.props.onClick(options);
   },
 
   render: function() {
