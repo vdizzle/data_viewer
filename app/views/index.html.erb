@@ -2,16 +2,12 @@
 <html>
   <head>
     <title>Data Viewer</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700"
-          rel="stylesheet"
-          type="text/css">
-    <link rel="stylesheet" type="text/css" href="assets/application.css">
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="assets/application.js"></script>
+    <%= stylesheet_link '/css/main.css' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   </head>
 
   <body>
-    <header></header>
-    <footer></footer>
+    <div id="modal_container"></div>
   </body>
+  <%= javascript_tag '/js/main.js' %>
 </html>

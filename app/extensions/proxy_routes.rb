@@ -2,10 +2,10 @@ module Extensions
   module ProxyRoutes
     module Helpers
       def proxy_to_data_store
-        puts '-'*36
         method = request.request_method.downcase.to_sym
-        url = request.path.sub(%r{^/api/data_store/}, '')
+        url = request.path.sub(%r{^/api/data-store/}, '')
         params = request.params
+        params.merge!(user_id: session[:current_user_id])
 
         if params['file']
           params['file'][:tempfile] = params['file'][:tempfile].path
@@ -14,18 +14,13 @@ module Extensions
         if request.body.respond_to?(:read)
           begin
             body = request.body.read
-            params.merge!(JSON.parse(body)) unless body.empty?
+            params.merge!(Rack::Utils.parse_nested_query(body)) unless body.empty?
           rescue JSON::ParserError
           end
         end
 
-        puts "Method - #{method}"
-        puts "url - #{url}"
-        puts "params - #{params}"
         response = DataStoreClient::Api.request_raw(method, url, params)
-        puts response.inspect
 
-        puts '-'*36
         content_type 'application/json'
         status response.code
         body response.body
@@ -41,7 +36,7 @@ module Extensions
     def self.registered(app)
       app.helpers Extensions::ProxyRoutes::Helpers
 
-      any app, '/api/data_store/*' do
+      any app, '/api/data-store/*' do
         proxy_to_data_store 
       end
     end

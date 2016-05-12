@@ -12,8 +12,6 @@ require 'erb'
 require 'i18n'
 require 'sinatra/base'
 require 'sinatra/json'
-require 'sprockets'
-require 'sprockets-helpers'
 require 'sass'
 require 'yaml'
 

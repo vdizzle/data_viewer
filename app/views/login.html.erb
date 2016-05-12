@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Viewer</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700"
+          rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" type="text/css" href="assets/application.css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="assets/application.js"></script>
+  </head>
+
+  <body>
+    User Login
+    <form action='/auth/login' method='post'>
+      Email: <input type="text" name="user[username]" />
+      Password <input type="password" name="user[password]" />
+      <input type="submit" value="Login">
+    </form>
+  </body>
+</html>

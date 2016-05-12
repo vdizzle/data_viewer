@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Viewer</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700"
+          rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" type="text/css" href="/sass/main.css">
+    <script type="text/javascript" src="/js/main.js"></script>
+  </head>
+
+  <body>
+    <header></header>
+    <div class="login-status">
+      <nav class="login">
+        <ul>
+          <% if user_logged_in? %>
+            <li><a href="/logout">Logout</a></li>
+          <% else %>
+            <li><a href="/login">Login</a></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+    <nav class="menu">
+        <a class="logo" href="">DashDash</a>
+        <ul class="main">
+          <li><a href="#contact-us" class="contact-us">Upload</a></li>
+        </ul>
+        <a href="#" id="pull"></a>
+      </nav>
+    <footer></footer>
+
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>
